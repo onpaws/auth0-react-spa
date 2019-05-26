@@ -1,0 +1,10 @@
+stages:
+- name: build
+  steps:
+  - runScriptConfig:
+      image: node:lts-alpine
+      shellScript: |-
+        yarn --pure-lockfile
+        yarn build
+timeout: 60
+notification: {}
