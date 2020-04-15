@@ -1,6 +1,16 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-import createAuth0Client from "@auth0/auth0-spa-js";
-import Auth0Client from "@auth0/auth0-spa-js/dist/typings/Auth0Client";
+import createAuth0Client, { 
+  Auth0Client,
+  Auth0ClientOptions, 
+  PopupLoginOptions, 
+  RedirectLoginResult, 
+  IdToken, 
+  getIdTokenClaimsOptions,
+  RedirectLoginOptions,
+  GetTokenSilentlyOptions,
+  GetTokenWithPopupOptions,
+  LogoutOptions
+ } from "@auth0/auth0-spa-js";
 
 interface IAuth0Context {
   isAuthenticated: boolean;
