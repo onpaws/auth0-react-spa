@@ -6,10 +6,10 @@ import { Auth0Provider } from './react-auth0-spa'
 import * as serviceWorker from './serviceWorker';
 import history from "./history";
 
-const { REACT_APP_AUTH0_DOMAIN, REACT_APP_AUTH0_CLIENTID } = process.env;
+const { REACT_APP_AUTH0_DOMAIN, REACT_APP_AUTH0_CLIENT_ID } = process.env;
 
 // A function that routes the user to the right place after login
-const onRedirectCallback = appState => {
+const onRedirectCallback = (appState: any) => {
   history.push(
     appState && appState.targetUrl
       ? appState.targetUrl
@@ -19,8 +19,8 @@ const onRedirectCallback = appState => {
 
 ReactDOM.render(
   <Auth0Provider
-    domain={REACT_APP_AUTH0_DOMAIN}
-    client_id={REACT_APP_AUTH0_CLIENTID}
+    domain={REACT_APP_AUTH0_DOMAIN!}
+    client_id={REACT_APP_AUTH0_CLIENT_ID}
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
   >
