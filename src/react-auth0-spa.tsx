@@ -9,11 +9,11 @@ interface IAuth0Context {
   popupOpen: boolean;
   loginWithPopup(options: PopupLoginOptions): Promise<void>;
   handleRedirectCallback(): Promise<RedirectLoginResult>;
-  getIdTokenClaims(o?: getIdTokenClaimsOptions): Promise<IdToken>;
-  loginWithRedirect(o: RedirectLoginOptions): Promise<void>;
-  getTokenSilently(o?: GetTokenSilentlyOptions): Promise<string | undefined>;
-  getTokenWithPopup(o?: GetTokenWithPopupOptions): Promise<string | undefined>;
-  logout(o?: LogoutOptions): void;
+  getIdTokenClaims(options?: getIdTokenClaimsOptions): Promise<IdToken>;
+  loginWithRedirect(options: RedirectLoginOptions): Promise<void>;
+  getTokenSilently(options?: GetTokenSilentlyOptions): Promise<string | undefined>;
+  getTokenWithPopup(options?: GetTokenWithPopupOptions): Promise<string | undefined>;
+  logout(options?: LogoutOptions): void;
 }
 
 interface Auth0ProviderOptions {
@@ -62,10 +62,10 @@ export const Auth0Provider = ({
     // eslint-disable-next-line
   }, []);
 
-  const loginWithPopup = async (o: PopupLoginOptions) => {
+  const loginWithPopup = async (options: PopupLoginOptions) => {
     setPopupOpen(true);
     try {
-      await auth0Client!.loginWithPopup(o);
+      await auth0Client!.loginWithPopup(options);
     } catch (error) {
       console.error(error);
     } finally {
@@ -87,23 +87,22 @@ export const Auth0Provider = ({
   };
 
   return (
-    <Auth0Context.Provider
-      value={{
+    <Auth0Context.Provider value={{
         isAuthenticated,
         user,
         loading,
         popupOpen,
         loginWithPopup,
         handleRedirectCallback,
-        getIdTokenClaims: (o: getIdTokenClaimsOptions | undefined) =>
-          auth0Client!.getIdTokenClaims(o),
-        loginWithRedirect: (o: RedirectLoginOptions) =>
-          auth0Client!.loginWithRedirect(o),
-        getTokenSilently: (o: GetTokenSilentlyOptions | undefined) =>
-          auth0Client!.getTokenSilently(o),
-        getTokenWithPopup: (o: GetTokenWithPopupOptions | undefined) =>
-          auth0Client!.getTokenWithPopup(o),
-        logout: (o: LogoutOptions | undefined) => auth0Client!.logout(o)
+        getIdTokenClaims: (options: getIdTokenClaimsOptions | undefined) =>
+          auth0Client!.getIdTokenClaims(options),
+        loginWithRedirect: (options: RedirectLoginOptions) =>
+          auth0Client!.loginWithRedirect(options),
+        getTokenSilently: (options: GetTokenSilentlyOptions | undefined) =>
+          auth0Client!.getTokenSilently(options),
+        getTokenWithPopup: (options: GetTokenWithPopupOptions | undefined) =>
+          auth0Client!.getTokenWithPopup(options),
+        logout: (options: LogoutOptions | undefined) => auth0Client!.logout(options)
       }}
     >
       {children}
