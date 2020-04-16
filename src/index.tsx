@@ -24,6 +24,7 @@ ReactDOM.render(
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
     useRefreshTokens
+    cacheLocation="localstorage"
   >
     <App />
   </Auth0Provider>,
@@ -35,4 +36,4 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 // Experimental: Sentry
-// window.Raven && window.Raven.config('https://b94b68e1f4b64d7ca888114b7df0439d@sentry.alphapoint.cloud/11').install()
+// window.Raven && window.Raven.config('https://b94b68e1f4b64d7ca888114b7df0439d@sentry.yourdomain.com/11').install()
