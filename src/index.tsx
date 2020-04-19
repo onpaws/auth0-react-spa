@@ -24,7 +24,7 @@ ReactDOM.render(
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
     useRefreshTokens
-    cacheLocation="localstorage"
+    cacheLocation="localstorage"  // needed to support page refresh w/ blocked 3rd party cookies
   >
     <App />
   </Auth0Provider>,
