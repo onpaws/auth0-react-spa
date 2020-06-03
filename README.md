@@ -11,6 +11,6 @@ Answer: localStorage is needed to resolve this limitation. [More info](https://c
 
 ### User creds
 ```
-Username: demo@example.org
+Username: demo@example.com
 Password: Password1
 ```
