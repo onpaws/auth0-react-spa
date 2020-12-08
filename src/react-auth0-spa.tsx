@@ -9,7 +9,8 @@ import createAuth0Client, {
   RedirectLoginOptions,
   GetTokenSilentlyOptions,
   GetTokenWithPopupOptions,
-  LogoutOptions
+  LogoutOptions,
+  User
  } from "@auth0/auth0-spa-js";
 
 interface IAuth0Context {
@@ -42,7 +43,7 @@ export const Auth0Provider = ({
   ...initOptions
 }: Auth0ProviderOptions & Auth0ClientOptions) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<User | undefined>();
   const [auth0Client, setAuth0] = useState<Auth0Client>();
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
